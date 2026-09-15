@@ -5,8 +5,9 @@ A small Vue 3 application for searching GitHub repositories and viewing reposito
 ## Features
 
 - Search public GitHub repositories
-- Sort results by best match, stars, or recently updated
+- Sort results by best match, stars, forks, help wanted issues, or recently updated
 - Paginated search results
+- Clear the current search and reset results
 - Repository detail view
 - URL-based search, sorting, and pagination state
 - Loading, empty, error, rate-limit, and not-found states
@@ -74,3 +75,8 @@ Unit tests focus on behavior that is most important to the user experience, incl
 ## AI Assistance
 
 AI tools were used during implementation for brainstorming, code suggestions, debugging, and review. All generated suggestions were manually reviewed and adapted.
+
+
+## Live Demo
+
+Deployed on Vercel: https://github-repository-explorer-gamma.vercel.app/
