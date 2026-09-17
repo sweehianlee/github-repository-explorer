@@ -6,7 +6,7 @@ import { getGitHubErrorMessage } from "../utils/githubError";
 
 const DEFAULT_PAGE_SIZE = 20;
 
-export function useRepositorySearch() {
+export function useRepoSearch() {
   const repositories = ref<GitHubRepo[]>([]);
   const loading = ref(false);
   const error = ref<string | null>(null);

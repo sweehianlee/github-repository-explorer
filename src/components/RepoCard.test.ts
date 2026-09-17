@@ -2,9 +2,9 @@ import { mount, RouterLinkStub } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 
 import type { GitHubRepo } from "../api/types.ts";
-import RepositoryCard from "./RepoCard.vue";
+import RepoCard from "./RepoCard.vue";
 
-const repository: GitHubRepo = {
+const repo: GitHubRepo = {
   id: 1,
   name: "core",
   full_name: "vuejs/core",
@@ -20,7 +20,7 @@ const repository: GitHubRepo = {
   updated_at: "2026-01-01T00:00:00Z",
   owner: {
     login: "vuejs",
-    avatar_url: "https://example.com/avatar.png",
+    avatar_url: "https://test.com/avatar.png",
     html_url: "https://github.com/vuejs",
   },
   license: {
@@ -29,11 +29,11 @@ const repository: GitHubRepo = {
   },
 };
 
-function mountRepositoryCard(overrides: Partial<GitHubRepo> = {}) {
-  return mount(RepositoryCard, {
+function mountRepoCard(overrides: Partial<GitHubRepo> = {}) {
+  return mount(RepoCard, {
     props: {
       repo: {
-        ...repository,
+        ...repo,
         ...overrides,
       },
     },
@@ -45,19 +45,19 @@ function mountRepositoryCard(overrides: Partial<GitHubRepo> = {}) {
   });
 }
 
-describe("RepositoryCard", () => {
-  it("renders repository information", () => {
-    const wrapper = mountRepositoryCard();
+describe("RepoCard", () => {
+  it("renders repos information", () => {
+    const wrapper = mountRepoCard();
 
     expect(wrapper.text()).toContain("vuejs/core");
-    expect(wrapper.text()).toContain("Vue.js core repository");
+    expect(wrapper.text()).toContain("Vue.js core repo");
     expect(wrapper.text()).toContain("TypeScript");
     expect(wrapper.text()).toContain("50,000");
     expect(wrapper.text()).toContain("8,000");
   });
 
   it("shows fallback text when description is missing", () => {
-    const wrapper = mountRepositoryCard({
+    const wrapper = mountRepoCard({
       description: null,
     });
 
@@ -65,7 +65,7 @@ describe("RepositoryCard", () => {
   });
 
   it("does not show language when language is missing", () => {
-    const wrapper = mountRepositoryCard({
+    const wrapper = mountRepoCard({
       language: null,
     });
 
@@ -73,7 +73,7 @@ describe("RepositoryCard", () => {
   });
 
   it("links to the repository detail page", () => {
-    const wrapper = mountRepositoryCard();
+    const wrapper = mountRepoCard();
 
     const link = wrapper.getComponent(RouterLinkStub);
 

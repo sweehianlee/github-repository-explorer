@@ -16,7 +16,7 @@ import type { RepoSort } from "../api/types";
 import RepoCard from "../components/RepoCard.vue";
 import {
   DEFAULT_PAGE_SIZE,
-  useRepositorySearch,
+  useRepoSearch,
 } from "../composables/useRepoSearch.ts";
 
 const route = useRoute();
@@ -25,7 +25,7 @@ const router = useRouter();
 const query = ref("");
 
 const { repositories, loading, error, totalCount, search, reset } =
-  useRepositorySearch();
+  useRepoSearch();
 
 const sortOptions = [
   {

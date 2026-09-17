@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { GitHubApiError, searchRepositories } from "../api/github";
-import { useRepositorySearch } from "./useRepoSearch";
+import { useRepoSearch } from "./useRepoSearch";
 
 vi.mock('../api/github', async (importOriginal) => {
   const actual =
@@ -17,13 +17,13 @@ vi.mock('../api/github', async (importOriginal) => {
 
 const mockedSearchRepositories = vi.mocked(searchRepositories);
 
-describe("useRepositorySearch", () => {
+describe("useRepoSearch", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
   it("does not call the API for an empty query", async () => {
-    const { search, repositories, totalCount, error } = useRepositorySearch();
+    const { search, repositories, totalCount, error } = useRepoSearch();
 
     await search("   ");
 
@@ -62,7 +62,7 @@ describe("useRepositorySearch", () => {
       ],
     });
 
-    const { search, repositories, totalCount, error } = useRepositorySearch();
+    const { search, repositories, totalCount, error } = useRepoSearch();
 
     await search("vue");
 
@@ -86,7 +86,7 @@ describe("useRepositorySearch", () => {
       items: [],
     });
 
-    const { search } = useRepositorySearch();
+    const { search } = useRepoSearch();
 
     await search("vue", 2, "stars");
 
@@ -103,7 +103,7 @@ describe("useRepositorySearch", () => {
       new TypeError("Failed to fetch"),
     );
 
-    const { search, repositories, totalCount, error } = useRepositorySearch();
+    const { search, repositories, totalCount, error } = useRepoSearch();
 
     await search("vue");
 
@@ -123,7 +123,7 @@ describe("useRepositorySearch", () => {
       ),
     );
   
-    const { search, error } = useRepositorySearch();
+    const { search, error } = useRepoSearch();
   
     await search("vue");
   
